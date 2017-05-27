@@ -12,7 +12,7 @@ The code also considers some architectural variations:
 - Minimal Gated Recurrent Units (M GRU see reference paper)
 - M-reluGRU (see reference paper)
  
-The later architectures, have been explored in the following work:
+The later architectures have been explored in the following work:
  
 *[1] M. Ravanelli, P. Brakel, M. Omologo, Y. Bengio, "Batch-normalized joint training for DNN-based distant speech recognition", in Proceedings of Interspeech 2017*
  
@@ -27,9 +27,11 @@ All the RNNs are based on a state-of-the-art technology which includes:
  
 ## Prerequisites:
 
-If not already done, install KALDI (http://kaldi-asr.org/) and make sure that your KALDI installation is working. 
-Run the original  TIMIT kaldi recipe in “egs/timit/s5/run.sh” and check whether everything is properly working. This step is necessary to compute features and labels that will be inherited in the theano/python part of this code. 
-Install THEANO (http://deeplearning.net/software/theano/install.html) and make sure your installation is working. Try for instance to  type “import theano” in the python environment and check whether everything works fine. 
+- If not already done, install KALDI (http://kaldi-asr.org/) and make sure that your KALDI installation is working. 
+
+- Run the original  TIMIT kaldi recipe in “egs/timit/s5/run.sh” and check whether everything is properly working. This step is necessary to compute features and labels that will be inherited in the theano/python part of this code. 
+
+- Install THEANO (http://deeplearning.net/software/theano/install.html) and make sure your installation is working. Try for instance to  type “import theano” in the python environment and check whether everything works fine. 
  
 The code has been tested with:
 - Python  2.7 
@@ -40,23 +42,23 @@ The code has been tested with:
 
 1. Run the HMM-GMM Kaldi s5 baseline of TIMIT.  This step is necessary to  derive the labels later used to train the RNN.  In particular: 
              - go to $KALDI_ROOT/egs/timit/s5.
-             - run the script run.sh. Make sure everything (especially the tri3-ali part) works fine. Note that the s5 recipe computes tri3-ali only for training data. To compute them:
+             - run the script run.sh. Make sure everything (especially the tri3-ali part) works fine. Note that the s5 recipe computes tri3-ali only for training data. Please, computed them for test and dev data as well. 
             
  
 2. Convert kaldi features and labels into the pkl format. 
-Set your own paths in  “compute_features.sh” (ali_dir,ali_dir_dev,ali_dir_test,data_dir,...)
-Run “compute_features.sh”.
+-Set your own paths in  “compute_features.sh” (ali_dir,ali_dir_dev,ali_dir_test,data_dir,...)
+-Run “compute_features.sh”.
  
 3. Write the Config file. 
-Open the file TIMIT_exp.cfg  and modify it according to your paths.  Feel free to modify the DNN architecture and the other optimization parameters according to your needs. See the comments in the  TIMIT_exp.cfg for a brief description of the role of each parameter
+-Open the file TIMIT_exp.cfg  and modify it according to your paths.  Feel free to modify the DNN architecture and the other optimization parameters according to your needs. See the comments in the  TIMIT_exp.cfg for a brief description of the role of each parameter
  
 4. Run the experiment. 
-Open the file run_exp.sh
+-Open the file run_exp.sh
 Set cfg_file, graph_dir, data_dir, ali_dir  according to your specific paths
 - To replicate GRU experiments of the paper [1], set cfg_file=TIMIT_GRU.cfg in run_exp.sh
 - To replicate M_reluGRU experiments (improved architecture) of the paper [1] set: cfg_file=TIMIT_M_reluGRU.cfg in run_exp.sh
 
-After the training, forward and decoding phases are finished, you can into the kaldi_decoding_scripts and run “./RESULT” to check the system performance.  
+-After the training, forward and decoding phases are finished, you can into the kaldi_decoding_scripts and run “./RESULT” to check the system performance.  
  
 Note that the performance obtained can be slightly  different from that reported in the paper due, for instance, to the randomness introduced by different initializations. To mitigate this source of randomness and perform a fair comparison across the various architectures, in [1] we ran  more experiments with different seeds (setting a different seed in the cfg_file) and we averaged the obtained error rates. 
  
