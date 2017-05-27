@@ -26,9 +26,9 @@ All the RNNs are based on a state-of-the-art technology which includes:
 
 - If not already done, install KALDI (http://kaldi-asr.org/) and make sure that your KALDI installation is working. 
 
-- Run the original  TIMIT kaldi recipe in “egs/timit/s5/run.sh” and check whether everything is properly working. This step is necessary to compute features and labels that will be inherited in the theano/python part of this code. 
+- Run the original  TIMIT kaldi recipe in *egs/timit/s5/run.sh* and check whether everything is properly working. This step is necessary to compute features and labels that will be inherited in the theano/python part of this code. 
 
-- Install THEANO (http://deeplearning.net/software/theano/install.html) and make sure your installation is working. Try for instance to  type “import theano” in the python environment and check whether everything works fine. 
+- Install THEANO (http://deeplearning.net/software/theano/install.html) and make sure your installation is working. Try for instance to  type *import theano* in the python environment and check whether everything works fine. 
  
 The code has been tested with:
 - Python  2.7 
@@ -58,7 +58,8 @@ steps/align_fmllr.sh --nj 24 --cmd "$train_cmd" \
 ``` 
 am-info exp/tri3/final.mdl
 ``` 
-- The required count_file in the cfg file (used to normalize the DNN posteriors before feeding the decoder) corresponds to the following file:
+- The required *count_file* in the config file (used to normalize the DNN posteriors before feeding the decoder) corresponds to the following file:
+
 */exp/dnn4_pretrain-dbn_dnn/ali_train_pdf.counts*
 
  
@@ -69,7 +70,7 @@ am-info exp/tri3/final.mdl
 - To replicate M_reluGRU experiments (improved architecture) of the paper [1], set *cfg_file=TIMIT_M_reluGRU.cfg* in *run_exp.sh*
 
 5. Check the results.
-- After training, forward and decoding phases are finished, you can go into the kaldi_decoding_scripts foder and run *./RESULT* to check the system performance.  
+- After training, forward and decoding phases are finished, you can go into the *kaldi_decoding_scripts* foder and run *./RESULT* to check the system performance.  
  
 - Note that the performance obtained can be slightly  different from that reported in the paper due, for instance, to the randomness introduced by different initializations. To mitigate this source of randomness and perform a fair comparison across the various architectures, in [1] we ran  more experiments with different seeds (i.e., setting a different seed in the cfg_file) and we averaged the obtained error rates. 
  
