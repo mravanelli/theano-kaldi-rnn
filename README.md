@@ -42,7 +42,14 @@ The code has been tested with:
 
 1. Run the HMM-GMM Kaldi s5 baseline of TIMIT.  This step is necessary to  derive the labels later used to train the RNN.  In particular: 
              - go to $KALDI_ROOT/egs/timit/s5.
-             - run the script run.sh. Make sure everything (especially the tri3-ali part) works fine. Note that the s5 recipe computes tri3-ali only for training data. Please, computed them for test and dev data as well. 
+             - run the script run.sh. Make sure everything (especially the tri3-ali part) works fine. Note that the s5 recipe computes tri3-ali only for training data. Please, computed them for test and dev data as well with the following commands:
+``` 
+steps/align_fmllr.sh --nj "$train_nj" --cmd "$train_cmd" \
+ data/dev data/lang exp/tri3 exp/tri3_ali_dev
+
+steps/align_fmllr.sh --nj 24 --cmd "$train_cmd" \
+ data/test data/lang exp/tri3 exp/tri3_ali_test
+```
             
  
 2. Convert kaldi features and labels into the pkl format. 
@@ -50,7 +57,13 @@ The code has been tested with:
 -Run “compute_features.sh”.
  
 3. Write the Config file. 
--Open the file TIMIT_exp.cfg  and modify it according to your paths.  Feel free to modify the DNN architecture and the other optimization parameters according to your needs. See the comments in the  TIMIT_exp.cfg for a brief description of the role of each parameter
+-Open the file TIMIT_exp.cfg  and modify it according to your paths.  Feel free to modify the DNN architecture and the other optimization parameters according to your needs. See the comments in the  TIMIT_exp.cfg for a brief description of the role of each parameter. The number of output N_out can be found with the following kaldi command (see number of pdfs):
+``` 
+am-info exp/tri3/final.mdl
+``` 
+The required count_file in the cfg file (used to normalized the DNN posterior before feeding the decoder) corresponds to the following file:
+*/exp/dnn4_pretrain-dbn_dnn/ali_train_pdf.counts*
+
  
 4. Run the experiment. 
 -Open the file run_exp.sh
@@ -58,7 +71,8 @@ Set cfg_file, graph_dir, data_dir, ali_dir  according to your specific paths
 - To replicate GRU experiments of the paper [1], set cfg_file=TIMIT_GRU.cfg in run_exp.sh
 - To replicate M_reluGRU experiments (improved architecture) of the paper [1] set: cfg_file=TIMIT_M_reluGRU.cfg in run_exp.sh
 
--After the training, forward and decoding phases are finished, you can into the kaldi_decoding_scripts and run “./RESULT” to check the system performance.  
+5. Check the results.
+After the training, forward and decoding phases are finished, you can into the kaldi_decoding_scripts and run “./RESULT” to check the system performance.  
  
 Note that the performance obtained can be slightly  different from that reported in the paper due, for instance, to the randomness introduced by different initializations. To mitigate this source of randomness and perform a fair comparison across the various architectures, in [1] we ran  more experiments with different seeds (setting a different seed in the cfg_file) and we averaged the obtained error rates. 
  
