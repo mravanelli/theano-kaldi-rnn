@@ -12,10 +12,7 @@ The code also considers some architectural variations:
 - Minimal Gated Recurrent Units (M_GRU)
 - M-reluGRU
  
-The latter architectures have been explored in the following work:
- 
-*[1] M. Ravanelli, P. Brakel, M. Omologo, Y. Bengio, "Batch-normalized joint training for DNN-based distant speech recognition", in Proceedings of Interspeech 2017*
- 
+The latter architectures have been explored in [1] (see reference). 
 Please cite this paper if you use this toolkit or a part of it.
  
 All the RNNs are based on a state-of-the-art technology which includes:
@@ -79,6 +76,6 @@ Note that the performance obtained can be slightly  different from that reported
 Please, note that this is an ongoing project. It would be helpful to report us any issue!
  
  
-## References:
+## Reference:
 *[1] M. Ravanelli, P. Brakel, M. Omologo, Y. Bengio, "Batch-normalized joint training for DNN-based distant speech recognition", in Proceedings of Interspeech 2017*
  
