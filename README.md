@@ -37,7 +37,7 @@ The code has been tested with:
  
 ## How to run an experiment:
 
-#### 1. Run the HMM-GMM Kaldi s5 baseline of TIMIT.  
+#### 1. Run the Kaldi s5 baseline of TIMIT.  
 This step is necessary to  derive the labels later used to train the RNN.  In particular: 
 - go to *$KALDI_ROOT/egs/timit/s5*.
 - run the script *run.sh*. Make sure everything (especially the *tri3-ali* part) works fine. Note that the s5 recipe computes tri3-ali for training data only. Please, computed them for test and dev data as well with the following commands:
