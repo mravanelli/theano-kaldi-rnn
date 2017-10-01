@@ -10,7 +10,7 @@ The current version supports the following standard architectures:
 The code also considers some architectural variations:
 - ReluGRU
 - Minimal Gated Recurrent Units (M_GRU)
-- M-reluGRU
+- M-reluGRU (also known as Light-GRU)
  
 The latter architectures have been explored in [1] (see reference). 
 Please cite this paper if you use this toolkit or a part of it.
