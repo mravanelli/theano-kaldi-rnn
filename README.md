@@ -80,7 +80,7 @@ am-info exp/tri3/final.mdl
 Please, note that this is an ongoing project. It would be helpful to report us any issue!
  
 ## Reference:
-*[1] M. Ravanelli, P. Brakel, M. Omologo, Y. Bengio, "Batch-normalized joint training for DNN-based distant speech recognition", in Proceedings of Interspeech 2017*
+*[1] M. Ravanelli, P. Brakel, M. Omologo, Y. Bengio, "Improving speech recognition by revising Gated Recurrent Units", in Proceedings of Interspeech 2017*
 
 https://arxiv.org/abs/1710.00641
  
