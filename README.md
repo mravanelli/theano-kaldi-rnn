@@ -34,6 +34,7 @@ The code has been tested with:
 - Python  2.7 
 - Ubuntu 14 and RedHat (6,7)
 - Theano 0.8.1 
+- Bash shell
  
 ## How to run an experiment:
 
@@ -71,7 +72,7 @@ am-info exp/tri3/final.mdl
 - To replicate M_reluGRU experiments (improved architecture) of the paper [1], set *cfg_file=TIMIT_M_reluGRU.cfg* in *run_exp.sh*
 
 #### 5. Check the results.
-- After training, forward and decoding phases are finished, you can go into the *kaldi_decoding_scripts* foder and run *./RESULT* to check the system performance.  
+- After training, forward and decoding phases are finished, you can go into the *kaldi_decoding_scripts* foder and run *./RESULTS* to check the system performance.  
  
 - Note that the performance obtained can be slightly  different from that reported in the paper due, for instance, to the randomness introduced by different initializations. To mitigate this source of randomness and perform a fair comparison across the various architectures, in [1] we ran  more experiments with different seeds (i.e., setting a different seed in the cfg_file) and we averaged the obtained error rates. 
  
