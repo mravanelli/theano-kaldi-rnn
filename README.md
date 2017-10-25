@@ -66,7 +66,7 @@ am-info exp/tri3/final.mdl
 
  
 #### 4. Run the experiment. 
-- Open the file *run_exp.sh*
+- Open the file *run_exp.sh*. Please note that the parameters defined in *run_exp.sh* have the priority over the parameters specified in the cfg_file. For example, the learning rate defined in  *run_exp.sh* is the one that will be actually used during training.
 - Set cfg_file, graph_dir, data_dir, ali_dir  according to your specific paths
 - To replicate GRU experiments of the paper [1], set *cfg_file=TIMIT_GRU.cfg* in *run_exp.sh*
 - To replicate M_reluGRU experiments (improved architecture) of the paper [1], set *cfg_file=TIMIT_M_reluGRU.cfg* in *run_exp.sh*
