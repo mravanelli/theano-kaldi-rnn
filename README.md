@@ -1,6 +1,8 @@
 ## Introduction:
 
-THEANO-KALDI-RNNs is a software which offers the possibility to use various Recurrent Neural Networks (RNNs) in the context of a Kaldi-based hybrid HMM/RNN speech recognizer.
+THEANO-KALDI-RNNs is a software which offers the possibility to use various Recurrent Neural Networks (RNNs) in the context of a Kaldi-based hybrid HMM/RNN speech recognizer. 
+
+Note: A new project called "pytorch-kaldi" https://github.com/mravanelli/pytorch-kaldi is now available. If you are interested, please take a look into it.
  
 The current version supports the following standard architectures:
 - reluRNN
